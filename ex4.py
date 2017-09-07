@@ -46,8 +46,8 @@ def main():
 
     cost_history = []
 
-    alpha = 0.003
-    for i in range(0, 500):
+    alpha = 0.01
+    for i in range(0, 100):
         plt.plot(x_list, predict_list(a, b, x_list))
         cost_history.append(calculate_cost(a, b, x_list, y_list))
         a, b = calculate_gradient(a, b, x_list, y_list, alpha)
