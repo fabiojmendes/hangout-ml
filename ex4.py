@@ -68,6 +68,9 @@ def main():
     plt.plot(cost_history)
     plt.show()
 
+    # Finally we predict the result for a new data point
+    # h = predict(a, b, 20)
+    # print(f'Prediction for a new value of x (20): {h:.4f}')
 
 if __name__ == '__main__':
     main()
