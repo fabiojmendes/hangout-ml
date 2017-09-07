@@ -19,24 +19,22 @@ def calculate_cost(a, b, x_list, y_list):
 
 
 def calculate_gradient(a, b, x_list, y_list, alpha):
+    m = len(x_list)
     grad_a = 0
-    for x, y in zip(x_list, y_list):
-        grad_a += predict(a, b, x) - y
-
-    a_new = a - alpha * (1/len(x_list) * grad_a)
-
     grad_b = 0
     for x, y in zip(x_list, y_list):
-        grad_b += (predict(a, b, x) - y) * x
+        h = predict(a, b, x)
+        grad_a += (h - y)
+        grad_b += (h - y) * x
 
-    b_new = b - alpha * (1/len(x_list) * grad_b)
-
+    a_new = a - alpha * (1/m) * grad_a
+    b_new = b - alpha * (1/m) * grad_b
     return (a_new, b_new)
 
 
 def main():
-    x_list = range(1, 100)
-    y_list = list(map(lambda x: x * 2, x_list))
+    x_list = [x / 10 for x in range(1, 50)]
+    y_list = [x * 2 for x in x_list]
 
     a, b = 0, 0
 
@@ -48,8 +46,8 @@ def main():
 
     cost_history = []
 
-    alpha = 0.00003
-    for i in range(0, 200):
+    alpha = 0.003
+    for i in range(0, 500):
         plt.plot(x_list, predict_list(a, b, x_list))
         cost_history.append(calculate_cost(a, b, x_list, y_list))
         a, b = calculate_gradient(a, b, x_list, y_list, alpha)
@@ -57,7 +55,7 @@ def main():
     cost = calculate_cost(a, b, x_list, y_list)
 
     plt.plot(x_list, predict_list(a, b, x_list))
-    plt.title(f"Final Cost: {cost:.6}, Params: ({a:.4}, {b:.4})")
+    plt.title(f"Final Cost: {cost:.4f}, Params: ({a:.4f}, {b:.4f})")
 
     plt.subplot(122)
     plt.grid(True)

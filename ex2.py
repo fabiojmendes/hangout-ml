@@ -33,7 +33,7 @@ def main():
     cost = calculate_cost(a, b, x_list, y_list)
 
     plt.plot(x_list, predict_list(a, b, x_list))
-    plt.title(f"Cost: {cost:.6}")
+    plt.title(f"Cost: {cost:.4f}")
     plt.show()
 
 if __name__ == '__main__':
