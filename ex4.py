@@ -1,5 +1,6 @@
 # Implementation of gradient descent
 import matplotlib.pyplot as plt
+from random import random
 
 def predict(a, b, x):
     return a + b * x
@@ -36,6 +37,9 @@ def main():
     x_list = [x / 10 for x in range(1, 50)]
     y_list = [x * 2 for x in x_list]
 
+    # Uncomment to add some variance
+    # y_list = [y + random() for y in y_list]
+
     a, b = 0, 0
 
     plt.subplot(121)
@@ -63,6 +67,7 @@ def main():
     plt.ylabel('Cost')
     plt.plot(cost_history)
     plt.show()
+
 
 if __name__ == '__main__':
     main()
