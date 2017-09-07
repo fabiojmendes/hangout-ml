@@ -10,12 +10,12 @@ def predict_list(a, b, x_list):
 
 
 def calculate_cost(a, b, x_list, y_list):
+    m = len(x_list)
     cost = 0
     for x, y in zip(x_list, y_list):
         cost += (predict(a, b, x) - y)**2
 
-    cost = cost / (2 * len(x_list))
-    return cost
+    return 1/(2*m) * cost
 
 
 def main():
