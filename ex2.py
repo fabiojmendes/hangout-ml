@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 
 def predict(a, b, x):
-    return a + b * x
+    return a * x + b
 
 
 def predict_list(a, b, x_list):

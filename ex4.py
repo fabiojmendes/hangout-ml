@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from random import random
 
 def predict(a, b, x):
-    return a + b * x
+    return a * x + b
 
 
 def predict_list(a, b, x_list):
@@ -25,8 +25,8 @@ def calculate_gradient(a, b, x_list, y_list, alpha):
     grad_b = 0
     for x, y in zip(x_list, y_list):
         h = predict(a, b, x)
-        grad_a += (h - y)
-        grad_b += (h - y) * x
+        grad_a += (h - y) * x
+        grad_b += (h - y)
 
     a_new = a - alpha * (1/m) * grad_a
     b_new = b - alpha * (1/m) * grad_b

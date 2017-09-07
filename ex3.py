@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 
 def predict(a, b, x):
-    return a + b * x
+    return a * x + b
 
 
 def predict_list(a, b, x_list):
@@ -28,18 +28,18 @@ def main():
     plt.ylabel('Price')
     plt.plot(x_list, y_list, 'o')
 
-    a = 0
-    b_list = list(range(-5, 10))
+    a_list = list(range(-5, 10))
+    b = 0
     cost_history = []
-    for b in b_list:
+    for a in a_list:
         cost_history.append(calculate_cost(a, b, x_list, y_list))
         plt.plot(x_list, predict_list(a, b, x_list))
 
     plt.subplot(122)
     plt.grid(True)
-    plt.xlabel('Value (b)')
+    plt.xlabel('Value (a)')
     plt.ylabel('Cost')
-    plt.plot(b_list, cost_history)
+    plt.plot(a_list, cost_history)
 
     plt.show()
 
