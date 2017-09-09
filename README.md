@@ -1,4 +1,4 @@
-# hangout-ml
+# Hangout-ml
 
 Code examples for the hangout about machine learning
 
